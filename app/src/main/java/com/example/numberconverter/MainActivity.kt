@@ -65,17 +65,6 @@ class MainActivity : AppCompatActivity() {
             "ცხრაასი",
             "ათასი"
         )
-        val hundred2 = listOf(
-            "ას ",
-            "ორას ",
-            "სამას ",
-            "ოთხას ",
-            "ხუთას ",
-            "ექვსას ",
-            "შვიდას ",
-            "რვაას ",
-            "ცხრაას "
-        )
 
         fun converter(number: Int): String {
 
@@ -84,8 +73,12 @@ class MainActivity : AppCompatActivity() {
             else if (number in 10..99 && number % 10 == 0) dozen[number / 10 - 1]                                                                       // 10, 20, 30
             else if (number / 100 < 1 && number / 10 != 0 && number.toString().length == 2) dozen2[number / 20] + unit19[number % 20 - 1]               // 32,87,45
             else if (number % 100 == 0) hundred[number / 100 - 1]                                                                                       // 100, 200, 900
-            else if (number / 100 > 0 && number % 10 == 0) hundred2[number / 100 - 1] + dozen[(number % 100) / 10 - 1]                                  // 120, 430, 990
-            else if (number / 100 > 0 && number % 10 != 0) hundred2[number / 100 - 1] + dozen2[(number % 100) / 20] + unit19[(number % 100) % 20 - 1]   // 121, 199, 999,
+            else if (number / 100 > 0 && number % 10 == 0) hundred[number / 100 - 1].substring(
+                0, (hundred[number / 100 - 1]).length - 1
+            ) + " " + dozen[(number % 100) / 10 - 1]                                                                                                    // 120, 430, 990
+            else if (number / 100 > 0 && number % 10 != 0) hundred[number / 100 - 1].substring(
+                0, (hundred[number / 100 - 1]).length - 1
+            ) + " " + dozen2[(number % 100) / 20] + unit19[(number % 100) % 20 - 1]                                                                      // 121, 199, 999
             else "Please enter a valid value!"
         }
 
